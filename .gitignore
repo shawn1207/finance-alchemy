@@ -1,0 +1,38 @@
+# Virtual Environment
+venv/
+.venv/
+
+# Environment variables
+.env
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# CrewAI storage
+.crewai_storage/
+
+# Output & Cache
+outputs/
+.cache/
+
+# Logs & PIDs
+*.log
+*.pid
+gradio.log
+celery.log
+poll_test.log
+
+# Database
+*.db
+
+# macOS specific files
+.DS_Store
+
+# IDE and tool-specific files
+.idea/
+.claude/
+.gradio/
+.omc/

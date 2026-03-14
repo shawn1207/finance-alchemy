@@ -1,0 +1,37 @@
+fundamental_task:
+  description: >
+    利用 `eastmoney_financial_data` 分析 {code} 的基本面数据。你必须根据【官方财报指标】工具返回的最新数据进行诊断。
+    禁止编造任何不存在的数字。如果工具返回 NULL 或 Data Missing，你必须在报告中如实记录并将该字段设为 null。
+  expected_output: >
+    一份包含 ROE、毛利率、净利润增速、研发投入等关键指标的结构化报告。
+    【映射规范】：必须将工具返回的如下字段填入对应 DTO 字段：
+    - “ROE (%)” -> roe
+    - “PE (TTM)” -> pe_ratio
+    - “营收增长率 (%)” -> revenue_growth
+    - “销售毛利率 (%)” -> gross_margin
+    - “归母净利润增长率 (%)” -> net_profit_growth
+    同时，你应在分析文本中引用“总市值 (亿)”及“研发投入 (元/亿)”作为分析依据。
+
+technical_task:
+  description: >
+    基于【官方深度技术分析】和【K线实时行情】对 {code} 进行分析。
+    你的结论必须建立在工具返回的真实价格序列和官方指标评分之上。
+  expected_output: >
+    包含当前趋势定位、支撑位、压力位及官方评分的分析结论。
+    【映射规范】：将工具返回的“支撑位(元)”作为关键点记录，确保趋势定位（UPTREND/DOWNTREND/SIDEWAYS）与官方技术评价一致。
+
+strategy_task:
+  description: >
+    整合以上分析，为 {code} 分配仓位。如果基本面或技术面数据出现 NULL，你必须在策略风险中重点说明。
+  expected_output: >
+    包含决策（买入/卖出/持有）、止损位、止盈位及决策依据的完整方案。
+
+audit_task:
+  description: >
+    【最高审计准则】对以上所有报告进行数据真实性审查。
+    1. 逐一核对报告中的数字与 context 中提供的【原始数据对照表】原始字符串。
+    2. 任何“未见于原始数据对照表”的数字（如虚假的 ROE 2.1%、多余的新闻事件）必须标记为“严重幻觉错误”。
+    3. 如果报告通过，设置 is_verified=True。
+    4. 如果发现任何幻觉，设置 is_verified=False，并将具体错误点详尽列入 risk_warnings 以便后续重做。
+  expected_output: >
+    包含 is_verified 判定、风险警告列表及审计意见的最终风控报告。
