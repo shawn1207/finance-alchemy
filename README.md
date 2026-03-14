@@ -32,13 +32,17 @@
 
 ## 🖥️ 系统预览 (System Preview)
 
-### 🔍 智能选股界面
-支持自然语言描述选股逻辑，实时响应筛选结果。
+### 🔍 ① 智能选股
+支持自然语言描述选股逻辑，从千万级研报与财报中智能提取标的。
 ![Smart Select Stock Interface](docs/images/ui_select_stock.png)
 
-### 📊 深度分析界面
-多智能体协同工作的核心入口，展示实时分析进度与状态转换。
-![Deep Analysis Interface](docs/images/ui_analysis.png)
+### 📊 ② 深度分析 (任务编排中)
+展示多智能体（Fundamental, Technical, Audit）实时协作的状态转换。
+![Deep Analysis Progress](docs/images/ui_analysis_progress.png)
+
+### 📈 ③ 深度分析报告 (最终产出)
+系统生成的包含“持有/观望”决策、置信度、风险评级及多维分析的专业研报。
+![Analysis Report Sample](docs/images/ui_report_sample.png)
 
 ---
 
